@@ -4,9 +4,12 @@ view {
 	width: 100%;
 }
 
+button {
+	width: 80%;
+}
+
 .login-btn {
 	margin-top: 80%;
-	width: 80%;
 }
 
 .userinfo {
