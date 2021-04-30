@@ -87,6 +87,6 @@ function parseCSV(strData, strDelimiter) {
         return (arrData);
 }
 
-module.exports.parser = {
-	parseCSV: parseCSV
+module.exports = {
+	parseCSV
 }

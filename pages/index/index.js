@@ -1,6 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const fs = wx.getFileSystemManager()
+
+const parser = require("../../utils/parser.js");
 
 Page({
         data: {
@@ -51,10 +54,19 @@ Page({
                         success(res) {
                                 // tempFilePath可以作为img标签的src属性显示图片
                                 const tempFiles = res.tempFiles
-				console.log(tempFiles);
+				fs.readFile({
+					filePath: tempFiles[0].path,
+					encoding: "utf8",
+					success: function(res) {
+						console.log(parser.parseCSV(res.data));
+					},
+					fail: function(err) {
+						console.log("ERROR: " + err);
+					}
+				});
                         },
-			fail() {
-
+			fail: function (err) {
+				console.log(err);
 			}
                 })
         }
